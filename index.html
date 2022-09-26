@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="container-fluid bg-dark">
+
+    <div class="wrapper" class="row">
+        <div class="container-fluid bg-white mx-auto w-75 h-100">
+
+            <!--NavBar-->
+            <nav class="navbar navbar-light bg-light border-bottom border-secundary">
+                <a class="navbar-brand col-9" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-instagram" viewBox="0 0 16 16">
+                        <path
+                            d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                    </svg>
+                    Instagram
+                </a>
+
+                <!--Button new post-->
+                <button id="newPost" type="button" class="btn btn-success btn-sm w-auto col-1" onclick="modalShow();">Create a new post</button>
+                <!--Modal-->
+                <div id='modal' class="modal" tabindex="-1" style="display: none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Create a new post</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close" onclick="modalHidden();"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h6>Caption</h6>
+                                <textarea name="comment" placeholder="Add the caption of your post here" cols="60" rows="2"></textarea>
+                                <div class="row">
+                                    <button class="photo col-1 border-0 p-0 bg-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 16 16">
+                                        <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                        <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
+                                      </svg></button>
+                                    <button class="location col-1 border-0 p-0 bg-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                                      </svg></button>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="modalHidden();">Close</button>
+                                <button type="button" class="btn btn-success" onclick="modalHidden();">Publish</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Button Settings-->
+                <div class="dropdown col-1">
+
+                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-gear-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
+                        </svg>
+                    </button>
+
+                    <!--Drop Menu-->
+                    <ul class="dropdown-menu">
+
+                        <li><a class="dropdown-item" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                    height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                    <path fill-rule="evenodd"
+                                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                </svg>&nbspAccount</a></li>
+                        <li><a class="dropdown-item" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                    height="16" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" />
+                                </svg>&nbspPrivacy</a></li>
+                        <li><a class="dropdown-item" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                    height="16" fill="currentColor" class="bi bi-shield-check" viewBox="0 0 16 16">
+                                    <path
+                                        d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z" />
+                                    <path
+                                        d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                                </svg>&nbspSecurity</a></li>
+                        <li><a class="dropdown-item text-danger" href="#">&nbspLog Out</a></li>
+                    </ul>
+                </div>
+
+                <!--Button Feed/Profile-->
+                <div class="btn-group mx-auto" role="group">
+                    <button id="btnProfile" onclick="profileShow();" type="button" class="btn btn-ligth btn-sm"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-grid-3x3" viewBox="0 0 16 16">
+                            <path
+                                d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5V5h4V1H1.5zM5 6H1v4h4V6zm1 4h4V6H6v4zm-1 1H1v3.5a.5.5 0 0 0 .5.5H5v-4zm1 0v4h4v-4H6zm5 0v4h3.5a.5.5 0 0 0 .5-.5V11h-4zm0-1h4V6h-4v4zm0-5h4V1.5a.5.5 0 0 0-.5-.5H11v4zm-1 0V1H6v4h4z" />
+                        </svg></button>
+                    <button id="btnFeed" onclick="feedShow();" type="button" class="btn btn-ligth btn-sm"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-square-fill" viewBox="0 0 16 16">
+                            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z" />
+                        </svg></button>
+                </div>
+
+                <!--Javascript-->
+                <script>
+                    let click = 1;
+
+                    //Modal hidden/show
+                    function modalShow() {
+                        document.getElementById("modal").style.display = "block";
+                        modalHidden();
+                    }
+                    function modalHidden() {
+                        document.getElementById("modal").style.display = "none";
+                        modalShow();
+                    }
+                    // Feed/Profile Hidden/Show
+                    function feedShow(){
+                        document.getElementById('feed').style.display = "Block";
+                        document.getElementById('profile').style.display = "none";
+                    }
+                    function profileShow(){
+                        document.getElementById('profile').style.display = 'Block';
+                        document.getElementById('feed').style.display = "none";
+                    }
+                    //Function change color icon like
+                    function changeLike() {
+                        if (click == 1) {
+                            document.getElementById("iconLike").style.fill = 'red';
+                            click++;
+                        } else {
+                            document.getElementById("iconLike").style.fill = 'black';
+                            click = 1;
+                        }
+                    }
+                    function changeLike1() {
+                        if (click == 1) {
+                            document.getElementById("iconLike1").style.fill = 'red';
+                            click++;
+                        } else {
+                            document.getElementById("iconLike1").style.fill = 'black';
+                            click = 1;
+                        }
+                    }
+                    function changeLike2() {
+                        if (click == 1) {
+                            document.getElementById("iconLike2").style.fill = 'red';
+                            click++;
+                        } else {
+                            document.getElementById("iconLike2").style.fill = 'black';
+                            click = 1;
+                        }
+                    }
+                </script>
+            </nav>
+
+            <!--feed-->
+            <div id="feed" style="display:block; margin-top: 3%;" class="mx-auto w-65 h-100">
+
+                <div class="card mx-auto" style="width: 50%">
+                    <!--Card Head-->
+                    <div class="card-head row mb-1">
+                        <h5 class="card-title col-10 mb-0">Nice day! 🔥</h5>
+                        <p class="card-date col-2 mb-0" style="color:rgb(147, 144, 144);">9/22</p>
+                    </div>
+                    <!--Card Body-->
+                    <div class="card-body px-0 py-0">
+                        <img src="https://cdn.pixabay.com/photo/2022/09/20/12/52/street-7467871_1280.jpg"
+                            class="card-img-top w-100 mx-0 mt-0 " alt="Photo" width="100%" style="max-height: 450px;">
+                    </div>
+                    <!--Card Footer-->
+                    <div class="card-footer row">
+                        <button class="like col-4 border-0 p-0 bg-light" onclick="changeLike();"
+                            style="max-width: 24px;"><svg id="iconLike" xmlns="http://www.w3.org/2000/svg" width="16"
+                                height="16" fill="currentColor" class="bi bi-suit-heart" viewBox="0 0 16 16">
+                                <path
+                                    d="m8 6.236-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
+                            </svg></button>
+                        <button class="comment col-4 border-0 p-0 bg-light" style="max-width: 24px;"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-chat" viewBox="0 0 16 16">
+                                <path
+                                    d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z" />
+                            </svg></button>
+                        <button class="send col-4 border-0 p-0 bg-light" style="max-width: 24px;"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-send" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z" />
+                            </svg></button>
+                        <button class="save col-4 border-0 p-0 bg-light" style="max-width: 24px;"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-bookmark" viewBox="0 0 16 16">
+                                <path
+                                    d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
+                            </svg></button>
+                        <p class="mb-0 px-0"><strong>234 Likes</strong></p>
+                        <p class="card-text px-0">
+                            Some quick example text to build on the card title and make up the
+                            bulk ofthe card's content.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card mx-auto my-4" style="width: 50%">
+                    <!--Card Head-->
+                    <div class="card-head row mb-1">
+                        <h5 class="card-title col-10 mb-0">Lolita and Friends! 🐮</h5>
+                        <p class="card-date col-2 mb-0" style="color:rgb(147, 144, 144);">9/20</p>
+                    </div>
+                    <!--Card Body-->
+                    <div class="card-body px-0 py-0">
+                        <img src="https://cdn.pixabay.com/photo/2022/02/17/17/21/cows-7019167_1280.jpg"
+                            class="card-img-top w-100 mx-0 mt-0 " alt="Photo" width="100%" style="max-height: 450px;">
+                    </div>
+                    <!--Card Footer-->
+                    <div class="card-footer row">
+                        <button class="like col-4 border-0 p-0 bg-light" onclick="changeLike1();"
+                            style="max-width: 24px;"><svg id="iconLike1" xmlns="http://www.w3.org/2000/svg" width="16"
+                                height="16" fill="currentColor" class="bi bi-suit-heart" viewBox="0 0 16 16">
+                                <path
+                                    d="m8 6.236-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
+                            </svg></button>
+                        <button class="comment col-4 border-0 p-0 bg-light" style="max-width: 24px;"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-chat" viewBox="0 0 16 16">
+                                <path
+                                    d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z" />
+                            </svg></button>
+                        <button class="send col-4 border-0 p-0 bg-light" style="max-width: 24px;"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-send" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z" />
+                            </svg></button>
+                        <button class="save col-4 border-0 p-0 bg-light" style="max-width: 24px;"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-bookmark" viewBox="0 0 16 16">
+                                <path
+                                    d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
+                            </svg></button>
+                        <p class="mb-0 px-0"><strong>543 Likes</strong></p>
+                        <p class="card-text px-0">
+                            Some quick example text to build on the card title and make up the
+                            bulk ofthe card's content.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card mx-auto my-4" style="width: 50%">
+                    <!--Card Head-->
+                    <div class="card-head row mb-1">
+                        <h5 class="card-title col-10 mb-0">Amazing! 🏖️</h5>
+                        <p class="card-date col-2 mb-0" style="color:rgb(147, 144, 144);">9/18</p>
+                    </div>
+                    <!--Card Body-->
+                    <div class="card-body px-0 py-0">
+                        <img src="https://cdn.pixabay.com/photo/2014/12/16/22/25/woman-570883_1280.jpg"
+                            class="card-img-top w-100 mx-0 mt-0 " alt="Photo" width="100%" style="max-height: 450px;">
+                    </div>
+                    <!--Card Footer-->
+                    <div class="card-footer row">
+                        <button class="like col-4 border-0 p-0 bg-light" onclick="changeLike2();"
+                            style="max-width: 24px;"><svg id="iconLike2" xmlns="http://www.w3.org/2000/svg" width="16"
+                                height="16" fill="currentColor" class="bi bi-suit-heart" viewBox="0 0 16 16">
+                                <path
+                                    d="m8 6.236-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
+                            </svg></button>
+                        <button class="comment col-4 border-0 p-0 bg-light" style="max-width: 24px;"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-chat" viewBox="0 0 16 16">
+                                <path
+                                    d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z" />
+                            </svg></button>
+                        <button class="send col-4 border-0 p-0 bg-light" style="max-width: 24px;"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-send" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z" />
+                            </svg></button>
+                        <button class="save col-4 border-0 p-0 bg-light" style="max-width: 24px;"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-bookmark" viewBox="0 0 16 16">
+                                <path
+                                    d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
+                            </svg></button>
+                        <p class="mb-0 px-0"><strong>100 Likes</strong></p>
+                        <p class="card-text px-0">
+                            Some quick example text to build on the card title and make up the
+                            bulk ofthe card's content.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!--Profile-->
+            <div id="profile" style="display:none;">
+                <div class="row">
+                    <img class="col-4 p-1" src="https://cdn.pixabay.com/photo/2022/09/20/12/52/street-7467871_1280.jpg"
+                        width="200" height="200">
+                    <img class="col-4 p-1" src="https://cdn.pixabay.com/photo/2022/02/17/17/21/cows-7019167_1280.jpg"
+                        width="200" height="200">
+                    <img class="col-4 p-1" src="https://cdn.pixabay.com/photo/2014/12/16/22/25/woman-570883_1280.jpg"
+                        width="200" height="200">
+                </div>
+                <div class="row">
+                    <img class="col-4 p-1"
+                        src="https://cdn.pixabay.com/photo/2019/12/05/16/54/blackbird-4675637_1280.jpg" width="200"
+                        height="200">
+                    <img class="col-4 p-1"
+                        src="https://cdn.pixabay.com/photo/2022/01/20/07/56/polar-bear-6951677_1280.jpg" width="200"
+                        height="200">
+                    <img class="col-4 p-1" src="https://cdn.pixabay.com/photo/2016/01/06/16/47/giraffe-1124451_1280.jpg"
+                        width="200" height="200">
+                </div>
+                <div class="row">
+                    <img class="col-4 p-1" src="https://cdn.pixabay.com/photo/2014/01/13/20/11/whale-243920_1280.jpg"
+                        width="200" height="200">
+                    <img class="col-4 p-1"
+                        src="https://cdn.pixabay.com/photo/2018/10/31/22/42/squirrel-3786845_1280.jpg" width="200"
+                        height="200">
+                    <img class="col-4 p-1" src="https://cdn.pixabay.com/photo/2015/04/30/20/45/dog-747460_1280.jpg"
+                        width="200" height="200">
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
